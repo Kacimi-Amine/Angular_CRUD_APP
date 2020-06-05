@@ -3,36 +3,62 @@
 <h3>List of Tasks</h3>
     </div>
     <div class="col-md-6 text-right">
-        <button class="btn btn-dark btn-sm">
+        <button  (click)="showadd=!showadd" class="btn btn-dark btn-sm">
             <i class="fa fa-plus"></i>New Tasks</button>
     </div>
 </div>
 
-<div class="row">
+<div class="row" *ngIf="showadd">
     <div class="col-md-6 mx-auto">
         <div class="form-group">
-            <label for="label"></label>
-            <input id="label"type="text" class="form-control">
+            <label for="label">
+                Title
+            </label>
+            <input [(ngModel)]="mytask.title"     id="label"type="text" class="form-control">
         </div>
         <div class="form-check my-2">
           <label class="form-check-label">
-            <input type="checkbox" class="form-check-input" >
+            <input [(ngModel)]="mytask.completed"  type="checkbox" class="form-check-input" >
             Completed
           </label>
         </div>
-       <!-- button.btn.btn-success.btn-block>i.fa.fa-send+{new tasks}
-        -->
-        <button class="btn btn-success btn-block"> 
-            <i class="fa fa-send"></i> New tasks</button>
+         <!-- pipes   -->
+        <!-- {{ mytask | json }} -->
+       <!-- button.btn.btn-success.btn-block>i.fa.fa-send+{new tasks}-->
+        <button *ngIf="!editvar"  (click)="persistTAsk()" class="btn btn-success btn-block"> 
+            <i class="fa fa-send"></i> New tasks
+        </button>
+        <button *ngIf="editvar" (click)="update()" class="btn btn-warning btn-block"> 
+                <i class="fa fa-refresh"></i> update tasks
+        </button>
     </div>
 </div>
 <div class="row">
     <div class="col-md-6 mx-auto">
+
+        <input (keyup)="searchTasks()" [(ngModel)]="searchtexto" placeholder="Search as u like .."   type="text" class="form-control">
        <ul class="list-group">
            
-           <li *ngFor="let task of tasks" class="list-group-item d-flex justify-content-between align-items-center">
-              {{ task.title}}
-               <span class="badge badge-secondary badge-pill">   {{ task.completed}}</span>
+           <li *ngFor="let task of resultTasks" class="list-group-item d-flex justify-content-between align-items-center">
+           
+            <button  (click)="editTask(task)" class="btn btn-sm btn-warning">
+                <i class="fa fa-pencil"></i>
+            </button>
+            {{ task.title}}
+            
+               <span  (click)="to_completed(task)"    [ngClass]="{
+                   'badge-info': task.completed, 
+                   'badge-danger': !task.completed
+               }"class="badge badge-secondary badge-pill">  
+               <i class="fa"[ngClass]="{
+                   'fa-thumbs-down':!task.completed,
+                   'fa-thumbs-up': task.completed
+               }"></i>
+                    
+               </span>
+               <button (click)="deleteTask(task.id)" class="btn btn-sm btn-dark">
+                <i class="fa fa-trash"></i>
+            </button>
            </li>
             
        </ul>

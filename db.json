@@ -1,18 +1,28 @@
 {
-    "tasks": [
-      {
-          "id": 1,
-           "title": "json-server",
-          "completed":"True",
-           "author": "typicode" 
-
-        },
-        {
-            "id": 2,
-             "title": "fake_json-server",
-             "completed":"false",
-             "author": "typicode" 
-            
-          }
-    ]
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Laravel",
+      "completed": true,
+      "author": "kacimi"
+    },
+    {
+      "id": 2,
+      "title": "Angular",
+      "completed": false,
+      "author": "typicode"
+    },
+    {
+      "title": "using json_server",
+      "completed": true,
+      "author": "Suissi",
+      "id": 3
+    },
+    {
+      "title": "ewa ya ng",
+      "completed": true,
+      "author": "Suissi",
+      "id": 4
+    }
+  ]
 }
