@@ -1,20 +1,18 @@
 {
-    "getprod": [
+    "tasks": [
       {
           "id": 1,
            "title": "json-server",
+          "completed":"True",
            "author": "typicode" 
 
         },
         {
             "id": 2,
              "title": "fake_json-server",
-             "author": "typicode" ,
-             "prodname":"suissi"
+             "completed":"false",
+             "author": "typicode" 
+            
           }
-    ],
-    "comments": [
-      { "id": 1, "body": "some comment", "postId": 1 }
-    ],
-    "profile": { "name": "typicode" }
-  }
+    ]
+}
